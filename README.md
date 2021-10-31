@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Time Localyzer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This react based project gives you a time in different timezone. You can reach demo from [here](eduteknoloji.com.tr/time-localyzer).
 
 ## Available Scripts
 
