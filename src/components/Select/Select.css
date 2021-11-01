@@ -1,4 +1,4 @@
-.city-select-list {
+.item-select-list {
     position: absolute;
     top: 100%;
     width: 100%;
@@ -11,16 +11,16 @@
     overflow: auto;
 }
 
-.city-select-list span {
+.item-select-list span {
     padding: 10px;
 }
 
-.city-select-list span:hover {
+.item-select-list span:hover {
     background: #4d4d4d;
     color: #fff;
 }
 
-.city-select-list span + span {
+.item-select-list span + span {
     border-top: 1px solid #ddd;
 }
 

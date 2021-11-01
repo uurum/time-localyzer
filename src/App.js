@@ -84,7 +84,7 @@ function App() {
         {!selectedCities.length && <div className="no-city">No city is selected</div>}
 
         {availableCities.length && <div className="form-input add-city">
-          <Select items={availableCities} selected={citySelected} />
+          <Select items={availableCities} selected={citySelected} placeholder="Select City" />
           <button onClick={addCity}>Add</button>
         </div>}
 
