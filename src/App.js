@@ -15,6 +15,7 @@ function App() {
 
   useEffect(() => {
     setAvailableCities(cities);
+    setTime((new Date()).toTimeString().substring(0,5));
   }, []);
 
   const addCity = () => {
@@ -54,7 +55,7 @@ function App() {
       <section className="content">
         <div className="form-input">
           <label>Enter Time : </label>
-          <input type="time" placeholder="--:--" onChange={(e) => setTime(e.target.value)} onBlur={() => setTimeTouched(true)} />
+          <input type="time" placeholder="--:--" value={time} onChange={(e) => setTime(e.target.value)} onBlur={() => setTimeTouched(true)} />
           <span className="err" hidden={time || !timeTouched}>Enter valid time</span>
         </div>
 
