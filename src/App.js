@@ -74,7 +74,7 @@ function App() {
                 <td>{city.name}</td>
                 <td>{timeOfCity(city.timezone)}</td>
                 <td>{city.timezone}</td>
-                <td><img src="assets/images/delete.svg" alt="delete" onClick={() => deleteCity(city.name)} /></td>
+                <td><img src="./assets/images/delete.svg" alt="delete" onClick={() => deleteCity(city.name)} /></td>
               </tr>
             ))
             }

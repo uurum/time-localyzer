@@ -12,6 +12,7 @@ function Select({ items, selected, placeholder }) {
     useEffect(() => {
         setAvailableItems(items);
         setDefaultItems(items);
+        itemRef.current.value = '';
     }, [items]);
 
     const filterItems = (val) => {
