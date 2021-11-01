@@ -59,39 +59,8 @@ button {
   flex-direction: row;
 }
 
-.add-city input {
-  margin-right: 10px;
-  flex: 1;
-}
-
 .add-city button {
   padding: 0 20px;
-}
-
-.city-select-list {
-  position: absolute;
-  top: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  left: 0;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  max-height: 300px;
-  overflow: auto;
-}
-
-.city-select-list span {
-  padding: 10px;
-}
-
-.city-select-list span:hover {
-  background: #4d4d4d;
-  color: #fff;
-}
-
-.city-select-list span + span {
-  border-top: 1px solid #ddd;
 }
 
 .no-city {

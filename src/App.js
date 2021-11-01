@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Header from './components/header/Header';
 import { cities } from './data/countries';
 import './App.css';
+import Select from './components/Select/Select';
 const cityTimezones = require('city-timezones');
 
 function App() {
@@ -10,8 +11,7 @@ function App() {
   const [timeTouched, setTimeTouched] = useState(false);
   const [selectedCities, setSelectedCities] = useState([]);
   const [availableCities, setAvailableCities] = useState([]);
-  const [cityFocused, setCityFocused] = useState(false);
-  const cityRef = useRef();
+  const [city, setCity] = useState();
 
   useEffect(() => {
     setAvailableCities(cities);
@@ -23,13 +23,11 @@ function App() {
       setTimeTouched(true);
       return;
     }
-    const city = cityRef.current.value;
     // cityTimeZones -  looking up timezones
     const cityLookup = cityTimezones.lookupViaCity(city);
 
     if (cityLookup.length) {
       setSelectedCities([...selectedCities, { name: city, timezone: cityLookup[0].timezone }]);
-      cityRef.current.value = '';
       setAvailableCities(availableCities.filter(item => item !== city));
     }
   }
@@ -40,8 +38,7 @@ function App() {
   }
 
   const citySelected = (city) => {
-    cityRef.current.value = city;
-    setCityFocused(false);
+    setCity(city);
   }
 
   // Calculates time from given timezone
@@ -49,11 +46,6 @@ function App() {
     const d = new Date();
     const enteredTime = new Date(d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + time);
     return enteredTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: tz });
-  }
-
-  const filterCities = (val) => {
-    const tempCities = cities.filter(city => selectedCities.map(item => item.name).indexOf(city) === -1);
-    setAvailableCities(tempCities.filter(city => city.toLocaleLowerCase().indexOf(val.toLocaleLowerCase()) !== -1));
   }
 
   return (
@@ -76,6 +68,7 @@ function App() {
             </tr>
           </thead>
           <tbody>
+
             {selectedCities.map((city, index) => (
               <tr key={index}>
                 <td>{city.name}</td>
@@ -90,18 +83,11 @@ function App() {
 
         {!selectedCities.length && <div className="no-city">No city is selected</div>}
 
-        <div className="form-input add-city">
-          <input type="text" placeholder="Select City" ref={cityRef}
-            onChange={(e) => filterCities(e.target.value)}
-            onFocus={() => setCityFocused(true)}
-            onBlur={() => setCityFocused(false)} />
-
-          {cityFocused && <div className="city-select-list">
-            {availableCities.map((city, index) => (<span key={index} onMouseDown={() => citySelected(city)}>{city}</span>))}
-          </div>
-          }
+        {availableCities.length && <div className="form-input add-city">
+          <Select items={availableCities} selected={citySelected} />
           <button onClick={addCity}>Add</button>
-        </div>
+        </div>}
+
       </section>
     </div>
   );
