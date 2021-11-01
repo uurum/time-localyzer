@@ -1,6 +1,6 @@
 # Time Localyzer
 
-This react based project gives you a time in different timezone. You can reach demo from [here](eduteknoloji.com.tr/time-localyzer).
+This react based project gives you a time in different timezone. You can reach demo from [here](http://eduteknoloji.com.tr/time-localyzer/).
 
 ## Available Scripts
 
